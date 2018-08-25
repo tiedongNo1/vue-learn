@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app"></div>
+        <script src="../vue.js"></script> 
+        <script>
+    
+    
+            var App = {
+                template:`<div>
+                        <input type="text" v-model="myText"/>
+                        {{myText}}
+                        <button @click='stus[0].name="rose";'>change stus</button>
+                    </div>`,
+                data:function(){
+                    return{
+                        myText:'',
+                        stus:[{name:'jack'}]
+                    }
+                },
+                watch:{
+                    //key是属于data属性的属性名，value是监视后的行为
+                    myText:function(newV,oldVue){
+                        console.log(newV,oldVue)
+                        if(newV == 'iloveyou'){
+                            alert('我不')
+                        }
+                    },
+                    //监视复杂类型，无法监视的原因是因为监视对象的引用地址的值没有改变
+                    // stus:function(){
+                    //     console.log('监视成功')
+                    // },
+                    /**
+                     * 深度监视：object||array
+                     * */
+                    stus:{
+                        deep:true,//深度监视
+                        handler:function(newV,oldV){
+                            console.log(newV,oldV,"监视成功")
+                        }
+                    }
+                }
+            }
+            new Vue({
+                el:"#app",
+                components:{
+                    app:App,
+                },
+                template:'<app/>',
+                
+                //组件过滤器
+                
+            })
+            
+    
+        </script>
+</body>
+</html>

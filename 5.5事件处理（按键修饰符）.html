@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按键修饰符</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 只有在 `keyCode` 是 13 时调用 `vm.submit()` -->
+        <input v-on:keyup.13="submit">
+
+
+    </div>
+</body>
+<script>
+    var demo = new Vue({
+        el:'#app',
+        data:{
+
+        },
+        methods:{
+            submit:function () {
+                alert('keyCode = 13')
+            }
+        }
+    })
+    //可以通过全局 config.keyCodes 对象自定义按键修饰符别名：
+    // 可以使用 `v-on:keyup.f1`
+    demo.config.keyCodes.f1 = 112
+
+</script>
+</html>

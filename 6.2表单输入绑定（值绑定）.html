@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>值绑定</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 有时我们可能想把值绑定到 Vue 实例的一个动态属性上，
+        这时可以用 v-bind 实现，并且这个属性的值可以不是字符串。 -->
+        <input type="radio" v-model="pick" v-bind:value="a">
+        <br><br>
+
+        <select v-model="selected">
+            <!-- 内联对象字面量 -->
+            <option v-bind:value="{ number: 123 }">123</option>
+        </select>
+
+        <!-- 在“change”时而非“input”时更新 -->
+        <input v-model.lazy="msg" >
+    </div>
+</body>
+<script>
+    var demo = new Vue({
+        el:'#app',
+        data:{
+            pick:'',
+        <!-- 在“change”时而非“input”时更新 -->
+        <input v-model.lazy="msg" >
+        }
+    })
+</script>
+</html>

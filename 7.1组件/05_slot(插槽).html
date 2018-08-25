@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+            float: left;
+            width:33%;
+            background-color: yellowgreen;
+            height:80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../vue.js"></script>
+    <script>
+        var MyLi = {
+            template:`<li>
+                    <slot></slot>
+                </li>`
+        }
+        Vue.component('my-li',MyLi);
+        //入口组件
+        var App ={
+            template:`
+            <div>
+                <ul>
+                    <my-li><button>111</button></my-li>
+                    <my-li>2</my-li>
+                    <my-li>3</my-li>
+                    <my-li>4</my-li>
+                    <my-li>5</my-li>
+                    <my-li>6</my-li>
+                    <my-li>7</my-li>
+                    <my-li>8</my-li>
+                    <my-li><button>999</button></my-li>
+                </ul>
+            </div>
+            `,
+        }
+        new Vue({
+            el:'#app',
+            components:{
+                app:App
+            },
+            template:'<app/>'
+        })
+    </script>
+</body>
+</html>

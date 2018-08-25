@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>start</title>
+
+</head>
+<body>
+    <div id="app"></div>
+
+    <!--1:引包-->
+    <script src="vue.js"></script>
+
+    <!--vue.js是支持所有模块，min是压缩后的，初学引入vue.js有提示-->
+    <!--通过vue对象 去new Vue(options;)-->
+    <script>
+        /**
+         * 使用步骤：
+         *  1：引包.具备Vue对象
+         *  2： 启动Vue  通过new Vue(options)
+         *  3: 配置options选项对象
+         *  4：el:"目的地"template：“模板” data：function(){ return{要使用的key:数据}}
+         *  5：页面中存在该目的地，目的地字符串描述，同jq方式一样
+         */
+        new Vue({
+            //el:发生行为的目的地
+            el:"#app",
+            // template:装载的模板
+            template:'<div><h1>hello world {{text}}</h1></div>',
+            //动态数据的声明
+            data:function () {//也可以使用对象
+                return{
+                    //template中要使用的数据
+                    text:'hi hi'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

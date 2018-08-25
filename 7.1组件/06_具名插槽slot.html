@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+            float: left;
+            width:33%;
+            background-color: yellowgreen;
+            height:80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../vue.js"></script>
+    <script>
+
+        /**
+         * 总结：slot是父组件传递的DOM结构
+         * vue提供的内置组件<slot></slot>
+         * */
+        var MySlot = {
+            template:`<li>
+                    <h1>1111</h1>
+                    <slot name="slot-one"></slot>
+                    <h1>2222</h1>
+                    <slot name="slot-two"></slot>
+                </li>`
+        }
+        Vue.component('my-slot',MySlot);
+        //入口组件
+        var App ={
+            template:`
+            <div>
+                <my-slot>
+                    <h1 name="slot-one">slot-one</h1>   
+                    <h1 name="slot-two">slot-two</h1> 
+                </my-slot>
+            </div>
+            `,
+        }
+        new Vue({
+            el:'#app',
+            components:{
+                app:App
+            },
+            template:'<app/>'
+        })
+    </script>
+</body>
+</html>

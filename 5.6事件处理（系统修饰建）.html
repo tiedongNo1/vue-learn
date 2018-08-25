@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>系统修饰键</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Alt + C -->
+        <input @keyup.alt.67="clear">
+
+        <!-- Ctrl + Click -->
+        <div @click.ctrl="doSomething">Do something</div>
+
+
+    </div>
+</body>
+<script>
+    /*
+    * 可以用如下修饰符来实现仅在按下相应按键时才触发鼠标或键盘事件的监听器。
+     .ctrl
+     .alt
+     .shift
+     .meta*/
+    var demo = new Vue({
+        el:"#app",
+
+    })
+</script>
+</html>

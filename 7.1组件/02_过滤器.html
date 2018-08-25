@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../vue.js"></script> 
+    <script>
+        /**
+         * 1、过滤器可以给数据显示进行过滤
+         * 需求：原本数据是abc... 修改后 可以生成cba
+         * 需求实现：1：为了互动性更好，用Input+v-model 来获取数据到vue中
+         * 2.输出：{{内容 | 使用过滤器输出}}
+         * */
+
+
+        var App = {
+            template:`<div>
+                    <input type="text" v-model="myText"/>
+                    {{myText | reverse('En')}}
+                </div>`,
+            data:function(){
+                return{
+                    myText:''
+                }
+            },
+            filters:{
+                reverse:function(dataStr,lang){
+                    return lang+':'+dataStr.split('').reverse().join("")
+                }    
+            }
+        }
+        new Vue({
+            el:"#app",
+            components:{
+                app:App,
+            },
+            template:'<app/>',
+            
+            //组件过滤器
+            
+        })
+        
+        //全局过滤器 {{"xxx" | myreverse('arg1111')}}
+        Vue.filter('myreverse',function(data,arg1){
+            return "xxx"
+        })
+
+    </script>
+</body>
+</html>

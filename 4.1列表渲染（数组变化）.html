@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组变化检测</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in items">{{index}}--{{item.message}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var demo = new Vue({
+        el:'#app',
+        data:{
+            items:[
+                {message:'1111111'},
+                {message:'2222222'},
+                {message:'3333333'}
+            ]
+        },
+        methods:{
+            
+        }
+    })
+</script>
+</html>

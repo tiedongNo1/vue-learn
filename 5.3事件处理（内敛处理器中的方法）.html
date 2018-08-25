@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内敛处理器中的方法</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="say('hi')">say hi</button>
+        <button v-on:click="say('what')">say what</button>
+        <!--有时也需要在内联语句处理器中访问原始的 DOM 事件。可以用特殊变量 $event 把它传入方法：-->
+        <button v-on:click="warm('warm......',$event)">warm</button>
+    </div>
+</body>
+<script>
+    var demo = new Vue({
+        el:'#app',
+        methods:{
+            say:function (message) {
+                alert(message)
+            },
+            warm:function (message,event) {
+                if(event)event.preventDefault()
+                alert(message)
+            }
+        }
+    })
+</script>
+</html>
