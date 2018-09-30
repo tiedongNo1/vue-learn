@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>指令</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-if='seen'>Did you see me</p>
+        <a v-bind:href="url">...</a>
+    </div>
+
+    <script>
+        /**
+        * 参数：一些指令能够接收一个“参数”，在指令名称之后以冒号表示。
+        *          例如，v-bind 指令可以用于响应式地更新 HTML 特性
+        *               <a v-bind:href="url">...</a>*/
+        var vm = new Vue({
+            el:'#app',
+            data:function(){
+                return{
+                    seen:false,
+                    url:'www.baidu.com'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

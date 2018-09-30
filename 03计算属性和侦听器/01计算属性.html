@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{message.split('').reverse().join('')}}</p>
+        <p>{{reversedMessage}}</p>
+        <p>{{onReversedMessage()}}</p>
+        <p>时间</p>
+        <p>{{now}}</p>
+        <p>{{onNow()}}</p>
+
+        <p>fullName</p>
+        <p>{{fullName}}</p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:function(){
+                return{
+                    message:'reverse',
+                    firstName:'Foo',
+                    lastName:'Bar',
+                    fullName:'Foo Bar'
+                }
+            },
+            computed:{
+                reversedMessage:function(){
+                    return this.message.split('').reverse().join('')
+                },
+                now:function(){
+                    return (Date.now())
+                }
+            },
+            methods:{
+                onReversedMessage:function(){
+                    return this.message.split('').reverse().join('')
+                },
+                onNow:function(){
+                    return (Date.now())
+                }
+            },
+            watch:{
+                firstName:function(val){
+                    this.fullName = val + " " + this.lastName
+                },
+                lastName:function(val){
+                    this.fullName = this.firstName + " " + val
+                }
+            }
+        })
+    </script>
+</body>
+</html>

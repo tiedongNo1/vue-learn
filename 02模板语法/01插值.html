@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>插值</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+        <div id="app">
+            <span>{{msg}}</span><br>
+            <!--通过使用 v-once 指令，你也能执行一次性地插值，当数据改变时，插值处的内容不会更新。-->
+            <span v-once> {{msg}}{{htmlMsg+111}}</span>
+            <span v-html='htmlMsg'></span>
+            <button v-bind:disabled='isButtonDisabled'>button</button>
+        </div>
+        <script>
+            var vm = new Vue({
+                el:'#app',
+                data:function(){
+                    return{
+                        msg:'hello world',
+                        htmlMsg:'<span style="color:red">hello html<span/>',
+                        isButtonDisabled:true,
+                    }
+                }
+            })
+        </script>
+       
+</body>
+</html>
