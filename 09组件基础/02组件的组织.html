@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件的组织</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+            <my-component-name title='hahaha'></my-component-name>
+            <my-component-name v-for="post in posts" :key="post.id" :title='post.title'></my-component-name>
+    </div>
+
+    <script>
+        //全局注册：Vue.component
+        Vue.component('my-component-name',{
+            props:['title'],//通过Prop向子组件传递数据
+            template:`<h3>{{title}}</h3>`
+        })
+        new Vue({
+            el:'#app',
+            data:{
+                 posts:[
+                     {id:1,title:'one'},
+                     {id:2,title:'two'},
+                     {id:3,title:'three'},
+                 ]   
+            }
+        })
+    </script>
+</body>
+</html>
