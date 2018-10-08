@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内联处理器中的方法</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+        <div id="app">
+            <button v-on:click="say('hi')">Say hi</button>
+            <button v-on:click="say('what')">Say what</button>
+            <button @click="warn('form cannot be submitted yet.',$event)">内联语句处理器中访问原始的 DOM 事件</button>
+        </div>
+        
+        <script>
+            new Vue({
+                el:"#app",
+                data:{
+                    counter:0,
+                    name:'billy'
+                },
+                methods:{
+                    say:function(message){
+                        alert(message)
+                    },
+                    warn:function(message,event){
+                        if(event)event.preventDefault();
+                        console.log(event)
+                        alert(message)
+                    }
+                }
+            })
+        </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件修饰符</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+        <div id="app">
+            <input @keyup.page-down="onPageDown">
+        </div>
+        
+        <script>
+            /**
+            * .stop 阻止单击事件继续传播
+            * .prevent 提交事件不在重载页面
+            * .capture 添加事件监听器是使用事件捕获模式（即元素自身触发的事件先在处理，然后才交由内部元素进行处理）
+            * .self 只当在event.target是当前元素自身时触发处理函数（即事件不是从内部元素触发的）
+            * .once 点击事件将只触发一次
+            * .passive     */
+
+            /**
+                全部的按键别名：
+                    .enter, .tab, .delete, .esc, .space, .up, .down, .left, .right
+
+
+
+                可以通过全局 config.keyCodes 对象自定义按键修饰符别名：
+                // 可以使用 `v-on:keyup.f1`
+                Vue.config.keyCodes.f1 = 112
+            */
+
+
+            /**
+                系统修饰键：
+                    修饰符来实现仅在按下相应按键时才触发鼠标或键盘事件的监听器
+                    .ctrl .alt .shift .meta
+            */
+            /**
+                .exact修饰符允许你控制由精确的系统修饰符组合触发的事件
+                    <!-- 即使 Alt 或 Shift 被一同按下时也会触发 -->
+                    <button @click.ctrl="onClick">A</button>
+
+                    <!-- 有且只有 Ctrl 被按下的时候才触发 -->
+                    <button @click.ctrl.exact="onCtrlClick">A</button>
+
+                    <!-- 没有任何系统修饰符被按下的时候才触发 -->
+                    <button @click.exact="onClick">A</button>
+            */
+            /**
+                鼠标按钮修饰符
+                    .left .right .middle
+            */
+
+            new Vue({
+                el:"#app",
+                data:{
+                    counter:0,
+                    name:'billy'
+                },
+                methods:{
+                    onPageDown:function(event){
+                        console.log(event)
+                    }
+                }
+            })
+        </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件处理方法</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+        <div id="app">
+            <button v-on:click="greet">click</button>
+        </div>
+        
+        <script>
+            new Vue({
+                el:"#app",
+                data:{
+                    counter:0,
+                    name:'billy'
+                },
+                methods:{
+                    greet:function(event){
+                        //this 在方法里指向当前Vue实例
+                        console.log(this)
+                        alert('Hello '+this.name+' !')
+                        //event是原生DOM事件
+                        if(event){
+                            alert(event.target.tagName)
+                        }
+                    }
+                }
+            })
+        </script>
+</body>
+</html>
