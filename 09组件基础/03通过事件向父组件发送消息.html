@@ -8,16 +8,70 @@
     <script src="../vue.js"></script>
 </head>
 <body>
-    <div id="app"></div>
+    <div id="app">
+            <div  v-bind:style="{ fontSize: postFontSize + 'em' }">
+                    <blog-post
+                        v-for="post in posts"
+                        v-bind:key="post"
+                        v-bind:post="post"
+                        v-on:enlarge-text = "onEnlargeText"
+                    ></blog-post>
+                  </div>
+                  <br><br>
+                  <p>在组件上使用v-model</p>
+                  <custom-input
+                        v-bind:value="searchText"
+                        v-on:input="searchText = $event"
+                        ></custom-input>
+    </div>
 
     <script>
-        Vue.component('',{
-
+        Vue.component('blog-post',{
+            props:['post'],
+            
+            // template:`<div>
+            //                     <p>{{post}}</p>
+            //                     <button v-on:click="$emit('enlarge-text')">
+            //                         Enlarge text
+            //                     </button>
+            //             </div>`,
+            //使用事件抛出一个值
+            // template:`<div>
+            //                     <p>{{post}}</p>
+            //                     <button v-on:click="$emit('enlarge-text',1)">
+            //                         Enlarge text
+            //                     </button>
+            //             </div>`,
+            //事件处理函数是一个方法：
+            template:`<div>
+                                 <p>{{post}}</p>
+                                <button v-on:click="$emit('enlarge-text',1)">
+                                     Enlarge text
+                                 </button>
+                         </div>`
+        })
+        //在组件上使用 v-model
+        Vue.component('custom-input',{
+            props:['value'],
+            template:`<div>
+                                <input
+                                    v-bind:value="value"
+                                    v-on:input="$emit('input',$event.target.value)"
+                                    >
+                                    <span>{{value}}</span>
+                            </div>`
         })
         new Vue({
             el:"#app",
             data:{
-
+                posts:['lsjdflskdjflsdkjfslkdjfsldkjfslkdjf','lsjdlfkjsdlfjksdlkfjsdlkfj','lsjdfkjsldfkjsdlkjfslkdjfsldkjf'],
+                postFontSize:1,
+                searchText:'',
+            },
+            methods:{
+                onEnlargeText:function(enlargeAmount){
+                    this.postFontSize+=enlargeAmount
+                }
             }
         })
     </script>

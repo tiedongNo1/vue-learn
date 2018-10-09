@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>传递静态或动态 Prop</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <blog-post title='My journey with Vue.' v-bind:likes='post.likes'></blog-post>
+        <blog-post v-bind:title='post.title' v-bind:likes='42'></blog-post>
+        <blog-post v-bind:is-published="false"></blog-post>
+        <blog-post v-bind:is-published="post.isPublished"></blog-post>
+
+        <br><br>
+        <p>传入一个对象的所有属性</p>
+        <blog-post v-bind='post'></blog-post>
+    </div>
+
+    <script>
+        Vue.component('blog-post',{
+            props:['title','likes',"isPublished"],
+            template:`<div>
+                    <h3>{{title}}</h3>
+                    <h4>number: {{likes}}</h4>
+                    <h4>bolean: {{isPublished}}</h4>
+                </div>`,
+        })
+        new Vue({
+            el:'#app',
+            data:{
+                post:{title:'dddddddddddddddd',likes:23,isPublished:true}
+            }
+        })
+    </script>
+</body>
+</html>

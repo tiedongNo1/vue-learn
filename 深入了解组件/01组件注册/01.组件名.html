@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件名</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+
+    <script>
+        /**
+            Vue.component('my-component-name', {....})
+            该组件名就是 Vue.component 的第一个参数。
+        */
+
+        /**
+            组件名大小写
+                使用kebab-case
+                Vue.component('my-component-name', { ....})
+
+                使用 PascalCase
+                Vue.component('MyComponentName', { ...  })
+        */
+
+        /**
+            全局注册：
+            Vue.component('my-component-name', {
+                // ... 选项 ...
+            })
+            在注册之后可以用在任何新创建的 Vue 根实例 (new Vue) 的模板中，在各自内部也都可以相互使用。
+        */
+        
+
+        /**
+            局部注册：
+            var ComponentA = { ....}
+            var ComponentB = { ...  }
+            var ComponentC = {  ... }
+
+            new Vue({
+                el: '#app',
+                components: {
+                    'component-a': ComponentA,
+                    'component-b': ComponentB
+                }
+            })
+        */
+    </script>
+</body>
+</html>
